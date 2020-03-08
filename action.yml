@@ -11,7 +11,7 @@ outputs:
 
 runs:
   using: 'docker'
-  image: 'docker://knabben/ggql'
+  image: 'docker://docker.pkg.github.com/knabben/ggql/ggql:latest'
   args:
     - scrape
     - --url
