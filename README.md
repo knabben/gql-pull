@@ -9,7 +9,12 @@ This Github Action uses [knabben/ggql](https://github.com/knabben/ggql)
 Input
 ---
 
-url: The GraphQL endpoint URL
+url: The GraphQL endpoint URL.
+
+Output
+---
+
+output: The difference of both schemas in a formatted string.
 
 Usage Example
 ---
@@ -19,8 +24,18 @@ an URL or a JSON file is allowed.
 
 ```
 - name: gql-pull
-  uses: knabben/gql-pull@0.0.1
+  id: gql
+  uses: knabben/gql-pull@0.0.6
   with:
-    source: schema.json
-    destination: dest.json
+    source: http://www.example.com/graphql/
+    destination: web/pr-schema.json
+
+- name: Bring diff to PR
+  uses: unsplash/comment-on-pr@master
+  with:
+    msg: ${{ steps.gql.outputs.output }}
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+
