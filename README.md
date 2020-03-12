@@ -11,17 +11,16 @@ Input
 
 url: The GraphQL endpoint URL
 
-Output
----
-
-file: The path of the SQLite3 database
-
 Usage Example
 ---
+
+It is possible to pass a source and destination to make the comparision, between two schemas,
+an URL or a JSON file is allowed.
 
 ```
 - name: gql-pull
   uses: knabben/gql-pull@0.0.1
   with:
-    url: https://myservice.com/graphql/
+    source: schema.json
+    destination: dest.json
 ```

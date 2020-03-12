@@ -5,14 +5,12 @@ inputs:
     description: 'GraphQL endpoint URL'
     required: true
 
-outputs:
-  file:
-    description: 'SQLite3 database file'
-
 runs:
   using: 'docker'
   image: 'docker://knabben/gql:latest'
   args:
     - scrape
-    - --url
-    - ${{ inputs.url }}
+    - -s
+    - ${{ inputs.source }}
+    - -d
+    - ${{ inputs.destination }}
