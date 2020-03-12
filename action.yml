@@ -5,6 +5,10 @@ inputs:
     description: 'GraphQL endpoint URL'
     required: true
 
+outputs:
+  output:
+    description: 'Schema difference output'
+
 runs:
   using: 'docker'
   image: 'docker://knabben/gql:latest'
